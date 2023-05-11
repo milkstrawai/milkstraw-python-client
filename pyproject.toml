@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "milkstraw-client"
+version = "0.0.1"
+description = "Generate synthetic data with a simple python client for milkstraw.ai"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+authors = [{ name = "Ibraheem Tuffaha", email = "ibraheem@milkstraw.ai" }]
+keywords = ["milkstraw", "generation", "synthetic", "augmentation", "anonymization"]
+dependencies = ["requests==2.30.0"]
+
+[project.urls]
+homepage = "https://milkstraw.ai/"
+repository = "https://github.com/milkstrawai/milkstraw-python-client"
