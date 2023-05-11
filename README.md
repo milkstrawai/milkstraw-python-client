@@ -1,5 +1,7 @@
 # Milkstraw Python Client
 
+![black](https://github.com/milkstrawai/milkstraw-python-client/workflows/black/badge.svg)
+
 This version is just a template and only does dummy test get requests to any given url.
 
 Install the client:
