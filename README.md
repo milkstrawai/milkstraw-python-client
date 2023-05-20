@@ -2,7 +2,7 @@
 
 Python SDK for interacting with Milkstraw APIs.
 
-![black](https://github.com/milkstrawai/milkstraw-python-client/workflows/black/badge.svg)
+![formatter](https://github.com/milkstrawai/milkstraw-python-client/workflows/Formatter/badge.svg)
 
 # Installation
 To install the latest development version of the SDK:
