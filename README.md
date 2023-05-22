@@ -13,7 +13,6 @@ pip install git+ssh://git@github.com/milkstrawai/milkstraw-python-client@main
 # Setup
 Export the required environment variables:
 ``` shell
-export MILKSTRAW_EDGE_SERVICE_URL="http://localhost/api/v1"
 export MILKSTRAW_USER_EMAIL=[YOUR_EMAIL]
 export MILKSTRAW_USER_PASS=[YOUR_PASSWORD]
 ```
