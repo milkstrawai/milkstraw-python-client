@@ -7,7 +7,7 @@ Python SDK for interacting with Milkstraw APIs.
 # Installation
 To install the latest development version of the SDK:
 ``` shell
-pip install git+ssh://git@github.com/milkstrawai/milkstraw-python-client@main
+pip install git+https://github.com/milkstrawai/milkstraw-python-client@main
 ```
 
 # Setup
