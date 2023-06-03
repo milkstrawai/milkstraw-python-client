@@ -18,34 +18,28 @@ export MILKSTRAW_USER_PASS=[YOUR_PASSWORD]
 ```
 
 # Usage
-## Add Generator
-``` shell
-$ python
->>> import milkstraw_client
->>> milkstraw_client.Generator.add("my_generator", 100, "path_to_data_folder/my_dataset.csv")
-Generator(id='646886dec71f830027c65889', name='my_generator', status='pending')
-```
+## Source Datasets
+``` python
+from milkstraw_client import SourceDataset
 
-## List Generators
-``` shell
-$ python
->>> import milkstraw_client
->>> milkstraw_client.Generator.list()
-[Generator(id='646886dec71f830027c65889', name='my_generator', status='pending')]
-```
+### Upload source dataset
+my_source_dataset = SourceDataset.upload("dataset_name", "data/source_dataset.csv")
+print(my_source_dataset)
+# SourceDataset(id='123', name='dataset_name', status='pending')
 
-## Get Generator
-``` shell
-$ python
->>> import milkstraw_client
->>> milkstraw_client.Generator.get("646886dec71f830027c65889")
-Generator(id='646886dec71f830027c65889', name='my_generator', status='done')
-```
+### Get source dataset
+my_source_dataset = SourceDataset.get(my_source_dataset.id)
+print(my_source_dataset)
+# SourceDataset(id='123', name='dataset_name', status='pending')
 
-## Download Generator
-``` shell
-$ python
->>> import milkstraw_client
->>> milkstraw_client.Generator.download("64686be9419ba3003fb17045", "data/generated_dataset.csv")
-"data/generated_data.csv"
+### List all source datasets
+my_source_datasets = SourceDataset.list()
+for index, dataset in enumerate(my_source_datasets):
+    print(f"SourceDataset #{index + 1}: {dataset}")
+# SourceDataset #1: SourceDataset(id='123', name='dataset_name', status='pending')
+
+### Download source dataset
+dataset_file_path = SourceDataset.download(my_source_dataset.id, "data/source_dataset_copy.csv")
+print(f"Downloaded file path: {dataset_file_path}")
+# Downloaded file path: data/source_dataset_copy.csv
 ```
