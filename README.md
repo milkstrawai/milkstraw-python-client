@@ -43,3 +43,24 @@ dataset_file_path = SourceDataset.download(my_source_dataset.id, "data/source_da
 print(f"Downloaded file path: {dataset_file_path}")
 # Downloaded file path: data/source_dataset_copy.csv
 ```
+
+## Models
+``` python
+from milkstraw_client import Model
+
+### Upload model
+my_model = Model.create("my_model_name", "123")
+print(my_model)
+# Model(id='456', name='my_model_name', status='pending', dataset='123')
+
+### Get model
+my_model = Model.get(my_model.id)
+print(my_model)
+# Model(id='456', name='my_model_name', status='pending', dataset='123')
+
+### List all models
+my_models = Model.list()
+for index, model in enumerate(my_models):
+    print(f"Model #{index + 1}: {model}")
+# Model #1: Model(id='456', name='my_model_name', status='pending', dataset='123')
+```
