@@ -1,6 +1,7 @@
 import os
 
 from milkstraw_client.api_client import APIClient
+from milkstraw_client.generated_dataset import GeneratedDataset
 from milkstraw_client.model import Model
 from milkstraw_client.source_dataset import SourceDataset
 

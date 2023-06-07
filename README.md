@@ -64,3 +64,29 @@ for index, model in enumerate(my_models):
     print(f"Model #{index + 1}: {model}")
 # Model #1: Model(id='456', name='my_model_name', status='pending', dataset='123')
 ```
+
+## Generated Datasets
+``` python
+from milkstraw_client import GeneratedDataset
+
+### Generate dataset
+my_source_dataset = GeneratedDataset.generate("456", 10000)
+print(my_source_dataset)
+# GeneratedDataset(id='789', model='456', status='pending')
+
+### Get generated dataset
+my_source_dataset = GeneratedDataset.get(my_source_dataset.id)
+print(my_source_dataset)
+# GeneratedDataset(id='789', model='456', status='pending')
+
+### List all generated datasets
+my_source_datasets = GeneratedDataset.list()
+for index, dataset in enumerate(my_source_datasets):
+    print(f"GeneratedDataset #{index + 1}: {dataset}")
+# GeneratedDataset #1: GeneratedDataset(id='789', model='456', status='pending')
+
+### Download generated dataset
+dataset_file_path = GeneratedDataset.download(my_source_dataset.id, "data/generated_dataset.csv")
+print(f"Downloaded file path: {dataset_file_path}")
+# Downloaded file path: data/generated_dataset.csv
+```
