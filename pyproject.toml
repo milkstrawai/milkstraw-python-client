@@ -18,7 +18,7 @@ classifiers = [
 ]
 authors = [{ name = "Ibraheem Tuffaha", email = "ibraheem@milkstraw.ai" }]
 keywords = ["milkstraw", "generation", "synthetic", "augmentation", "anonymization"]
-dependencies = ["requests==2.30.0"]
+dependencies = ["requests==2.31.0"]
 
 [project.urls]
 homepage = "https://milkstraw.ai/"
