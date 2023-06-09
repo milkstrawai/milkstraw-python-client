@@ -4,7 +4,7 @@ import milkstraw_client
 from milkstraw_client import APIClient
 
 
-class SourceDataset:
+class SourceData:
     def __init__(self, id: str, name: str, status: str):
         self.id = id
         self.name = name
@@ -15,29 +15,29 @@ class SourceDataset:
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def upload(name: str, file_path: str) -> SourceDataset:
-        url = f"{milkstraw_client.edge_service_url}/datasets/"
+    def upload(name: str, file_path: str) -> SourceData:
+        url = f"{milkstraw_client.edge_service_url}/source-data/"
         params = {"name": name}
         file_paths = {"file": file_path}
         response = APIClient.request("post", url, params=params, file_paths=file_paths)
-        return SourceDataset(**response)
+        return SourceData(**response)
 
     @staticmethod
-    def get(id: str) -> SourceDataset:
-        url = f"{milkstraw_client.edge_service_url}/datasets/{id}"
+    def get(id: str) -> SourceData:
+        url = f"{milkstraw_client.edge_service_url}/source-data/{id}"
         response = APIClient.request("get", url)
-        return SourceDataset(**response)
+        return SourceData(**response)
 
     @staticmethod
-    def list() -> list[SourceDataset]:
-        url = f"{milkstraw_client.edge_service_url}/datasets"
+    def list() -> list[SourceData]:
+        url = f"{milkstraw_client.edge_service_url}/source-data"
         response = APIClient.request("get", url)
-        datasets = [SourceDataset(**dataset_dict) for dataset_dict in response]
-        return datasets
+        data = [SourceData(**data_dict) for data_dict in response]
+        return data
 
     @staticmethod
     def download(id: str, file_path: str) -> str:
-        url = f"{milkstraw_client.edge_service_url}/datasets/download/{id}"
+        url = f"{milkstraw_client.edge_service_url}/source-data/download/{id}"
         response = APIClient.request("get", url, return_raw=True)
         with open(file_path, "w") as f:
             f.write(response)

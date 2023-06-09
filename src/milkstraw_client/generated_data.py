@@ -4,7 +4,7 @@ import milkstraw_client
 from milkstraw_client import APIClient
 
 
-class GeneratedDataset:
+class GeneratedData:
     def __init__(self, id: str, model: str, status: str):
         self.id = id
         self.model = model
@@ -15,28 +15,28 @@ class GeneratedDataset:
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def generate(model: str, records_num: int) -> GeneratedDataset:
-        url = f"{milkstraw_client.edge_service_url}/data/"
+    def generate(model: str, records_num: int) -> GeneratedData:
+        url = f"{milkstraw_client.edge_service_url}/generated-data/"
         json = {"modelId": model, "recordsNum": records_num}
         response = APIClient.request("post", url, json=json)
-        return GeneratedDataset(**response)
+        return GeneratedData(**response)
 
     @staticmethod
-    def get(id: str) -> GeneratedDataset:
-        url = f"{milkstraw_client.edge_service_url}/data/{id}"
+    def get(id: str) -> GeneratedData:
+        url = f"{milkstraw_client.edge_service_url}/generated-data/{id}"
         response = APIClient.request("get", url)
-        return GeneratedDataset(**response)
+        return GeneratedData(**response)
 
     @staticmethod
-    def list() -> list[GeneratedDataset]:
-        url = f"{milkstraw_client.edge_service_url}/data"
+    def list() -> list[GeneratedData]:
+        url = f"{milkstraw_client.edge_service_url}/generated-data"
         response = APIClient.request("get", url)
-        datasets = [GeneratedDataset(**dataset_dict) for dataset_dict in response]
-        return datasets
+        data = [GeneratedData(**data_dict) for data_dict in response]
+        return data
 
     @staticmethod
     def download(id: str, file_path: str) -> str:
-        url = f"{milkstraw_client.edge_service_url}/data/download/{id}"
+        url = f"{milkstraw_client.edge_service_url}/generated-data/download/{id}"
         response = APIClient.request("get", url, return_raw=True)
         with open(file_path, "w") as f:
             f.write(response)

@@ -5,32 +5,41 @@ from milkstraw_client import APIClient
 
 
 class Model:
-    def __init__(self, id: str, name: str, status: str, dataset: str):
+    def __init__(self, id: str, name: str, status: str, source_data: str):
         self.id = id
         self.name = name
         self.status = status
-        self.dataset = dataset
+        self.source_data = source_data
 
     def __repr__(self) -> str:
         attributes = ", ".join(f"{key}='{value}'" for key, value in vars(self).items())
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def create(name: str, dataset: str) -> Model:
+    def create(name: str, source_data: str) -> Model:
         url = f"{milkstraw_client.edge_service_url}/models/"
-        json = {"name": name, "datasetId": dataset}
+        json = {"name": name, "sourceDataId": source_data}
         response = APIClient.request("post", url, json=json)
-        return Model(**response)
+        return Model.__parse_dict(response)
 
     @staticmethod
     def get(id: str) -> Model:
         url = f"{milkstraw_client.edge_service_url}/models/{id}"
         response = APIClient.request("get", url)
-        return Model(**response)
+        return Model.__parse_dict(response)
 
     @staticmethod
     def list() -> list[Model]:
         url = f"{milkstraw_client.edge_service_url}/models"
         response = APIClient.request("get", url)
-        models = [Model(**model_dict) for model_dict in response]
+        models = [Model.__parse_dict(model_dict) for model_dict in response]
         return models
+
+    @staticmethod
+    def __parse_dict(model_dict: dict[str, str]) -> Model:
+        return Model(
+            id=model_dict["id"],
+            name=model_dict["name"],
+            status=model_dict["status"],
+            source_data=model_dict["sourceData"],
+        )
