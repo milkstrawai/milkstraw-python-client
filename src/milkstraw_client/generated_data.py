@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Union
+
 import milkstraw_client
 from milkstraw_client import APIClient
 
@@ -15,9 +17,11 @@ class GeneratedData:
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def generate(model: str, records_num: int) -> GeneratedData:
+    def generate(model: str, records_num: int, condition: Union[dict, None] = None) -> GeneratedData:
         url = f"{milkstraw_client.edge_service_url}/generated-data/"
         json = {"modelId": model, "recordsNum": records_num}
+        if condition is not None:
+            json["condition"] = condition
         response = APIClient.request("post", url, json=json)
         return GeneratedData(**response)
 
