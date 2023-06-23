@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Union
+from typing import Optional
 
 import milkstraw_client
 from milkstraw_client import APIClient
@@ -17,7 +17,7 @@ class GeneratedData:
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def generate(model: str, records_num: int, condition: Union[dict, None] = None) -> GeneratedData:
+    def generate(model: str, records_num: int, condition: Optional[dict] = None) -> GeneratedData:
         url = f"{milkstraw_client.edge_service_url}/generated-data/"
         json = {"modelId": model, "recordsNum": records_num}
         if condition is not None:

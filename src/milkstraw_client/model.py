@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Union
+from typing import Optional
 
 import milkstraw_client
 from milkstraw_client import APIClient
@@ -18,7 +18,7 @@ class Model:
         return f"{self.__class__.__name__}({attributes})"
 
     @staticmethod
-    def create(name: str, source_data: str, anonymize_personal_info: Union[bool, None] = None) -> Model:
+    def create(name: str, source_data: str, anonymize_personal_info: Optional[bool] = None) -> Model:
         url = f"{milkstraw_client.edge_service_url}/models/"
         json = {"name": name, "sourceDataId": source_data}
         if anonymize_personal_info is not None:
