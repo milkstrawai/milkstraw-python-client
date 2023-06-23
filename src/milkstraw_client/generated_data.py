@@ -41,7 +41,9 @@ class GeneratedData:
     @staticmethod
     def download(id: str, file_path: str) -> str:
         url = f"{milkstraw_client.edge_service_url}/generated-data/download/{id}"
-        response = APIClient.request("get", url, return_raw=True)
-        with open(file_path, "w") as f:
-            f.write(response)
-        return file_path
+        return APIClient.download_file(file_path, url)
+
+    @staticmethod
+    def download_report(id: str, file_path: str) -> str:
+        url = f"{milkstraw_client.edge_service_url}/generated-data/download/report/{id}"
+        return APIClient.download_file(file_path, url)

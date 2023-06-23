@@ -38,7 +38,4 @@ class SourceData:
     @staticmethod
     def download(id: str, file_path: str) -> str:
         url = f"{milkstraw_client.edge_service_url}/source-data/download/{id}"
-        response = APIClient.request("get", url, return_raw=True)
-        with open(file_path, "w") as f:
-            f.write(response)
-        return file_path
+        return APIClient.download_file(file_path, url)

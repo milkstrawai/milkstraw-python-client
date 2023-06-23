@@ -12,6 +12,13 @@ class APIClient:
     token = None
 
     @classmethod
+    def download_file(cls, file_path: str, url: str) -> str:
+        response = APIClient.request("get", url, return_raw=True)
+        with open(file_path, "wb") as f:
+            f.write(response)
+        return file_path
+
+    @classmethod
     def request(
         cls,
         method: str,
@@ -29,7 +36,7 @@ class APIClient:
             response_formatted = f"status_code: `{response.status_code}`, message: `{response.text}`"
             raise HTTPError(f"Request to Milkstraw API failed. {response_formatted}")
         if return_raw:
-            return response.text
+            return response.content
         json_response: dict = response.json()
         return json_response
 

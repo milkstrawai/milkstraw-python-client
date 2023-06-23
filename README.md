@@ -87,6 +87,11 @@ for index, data in enumerate(all_generated_data):
 
 ### Download generated data
 data_file_path = GeneratedData.download(my_generated_data.id, "data/generated_data.csv")
-print(f"Downloaded file path: {data_file_path}")
-# Downloaded file path: data/generated_data.csv
+print(f"Downloaded data file path: {data_file_path}")
+# Downloaded data file path: data/generated_data.csv
+
+### Download generated data report
+report_file_path = GeneratedData.download_report(my_generated_data.id, "data/generated_data_report.zip")
+print(f"Downloaded report file path: {report_file_path}")
+# Downloaded report file path: data/generated_data_report.csv
 ```
