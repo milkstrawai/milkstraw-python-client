@@ -16,9 +16,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-authors = [{ name = "Ibraheem Tuffaha", email = "ibraheem@milkstraw.ai" }]
+authors = [{ name = "Milkstraw AI, Inc.", email = "admin@milkstraw.ai" }]
 keywords = ["milkstraw", "generation", "synthetic", "augmentation", "anonymization"]
-dependencies = ["requests==2.30.0"]
+dependencies = ["requests==2.31.0"]
 
 [project.urls]
 homepage = "https://milkstraw.ai/"
